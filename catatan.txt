@@ -1,0 +1,47 @@
+1 jam
+
+07.22 - / 07-38 - 07 50
+
+# Post
+Method : POST
+URL : /books
+Body :{
+    "name": string,
+    "year": number,
+    "author": string,
+    "summary": string,
+    "publisher": string,
+    "pageCount": number,
+    "readPage": number,
+    "reading": boolean
+}
+## Success 
+    Status Code : 201
+    Response Body:
+    {
+        "status": "success",
+        "message": "Buku berhasil ditambahkan",
+        "data": {
+            "bookId": "1L7ZtDUFeGs7VlEt"
+        }
+    }
+## Fail
+ - Tidak melampirkan name
+   status code : 400
+   Response : {
+    "status" : "fail",
+    "message" : "Gagal menambahkan buku. Mohon isi nama buku"
+   }
+ - melampirkan nilai properti readPage yang lebih besar dari nilai properti pageCount
+   status code : 400,
+   Response : {
+    "status": "fail",
+    "message": "Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount"
+    }
+ - generic error
+   Status Code : 500
+   Response : {
+    "status": "error",
+    "message": "Buku gagal ditambahkan"
+   }
+   
