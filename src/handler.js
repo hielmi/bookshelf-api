@@ -45,9 +45,9 @@ const addBookHandler = (request, h) => {
     if (isSuccess) {
       const response = h.response({
         status: 'success',
-        message: 'Catatan berhasil ditambahkan',
+        message: 'Buku berhasil ditambahkan',
         data: {
-          noteId: id,
+          bookId: '1L7ZtDUFeGs7VlEt',
         },
       });
       response.code(201);
@@ -64,4 +64,12 @@ const addBookHandler = (request, h) => {
   }
 };
 
-module.exports = addBookHandler;
+const gettingAllBooks = (request, h) => {
+  const response = h.response({
+    status: 'success',
+    data: { books },
+  });
+  response.code(200);
+  return response;
+};
+module.exports = { addBookHandler, gettingAllBooks };

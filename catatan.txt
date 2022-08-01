@@ -1,6 +1,5 @@
-1 jam
+3 jam 13 menit
 
-07.22 - / 07-38 - 07 50
 
 # Post
 Method : POST
@@ -45,3 +44,108 @@ Body :{
     "message": "Buku gagal ditambahkan"
    }
    
+#GET all books
+## Success
+ const response = h.response({
+    status: 'success',
+    data: { books },
+  });
+  response.code(200);
+  return response;
+
+# Get spesific bookId
+Method : GET
+URL: /books/{bookId}
+
+ - id tidak ditemukan
+    Status Code : 404
+    Response Body:
+    {
+        "status": "fail",
+        "message": "Buku tidak ditemukan"
+    }
+ - ditemukan
+    Status Code : 200
+    Response Body:
+    {
+        "status": "success",
+        "data": {
+            "book": {
+                "id": "aWZBUW3JN_VBE-9I",
+                "name": "Buku A Revisi",
+                "year": 2011,
+                "author": "Jane Doe",
+                "summary": "Lorem Dolor sit Amet",
+                "publisher": "Dicoding",
+                "pageCount": 200,
+                "readPage": 26,
+                "finished": false,
+                "reading": false,
+                "insertedAt": "2021-03-05T06:14:28.930Z",
+                "updatedAt": "2021-03-05T06:14:30.718Z"
+            }
+        }
+    }
+
+# Update 
+Method : PUT
+URL : /books/{bookId}
+Body Request:
+    {
+        "name": string,
+        "year": number,
+        "author": string,
+        "summary": string,
+        "publisher": string,
+        "pageCount": number,
+        "readPage": number,
+        "reading": boolean
+    }
+ - tidak melampirkan properti name
+    Status Code : 400
+    Response Body:
+    {
+        "status": "fail",
+        "message": "Gagal memperbarui buku. Mohon isi nama buku"
+    }
+- read page > page pageCount
+    Status Code : 400
+    Response Body:
+    {
+        "status": "fail",
+        "message": "Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount"
+    }
+- id tidak ditemukan 
+    Status Code : 404
+    Response Body:
+    {
+        "status": "fail",
+        "message": "Gagal memperbarui buku. Id tidak ditemukan"
+    }
+
+- Success 
+    Status Code : 200
+    Response Body:
+    {
+        "status": "success",
+        "message": "Buku berhasil diperbarui"
+    }
+
+# Delete book
+Method : DELETE
+URL: /books/{bookId}
+
+ - id tidak ditemukan
+    Status Code : 404
+    Response Body:
+    {
+        "status": "fail",
+        "message": "Buku gagal dihapus. Id tidak ditemukan"
+    }
+- Success 
+    Status Code : 200
+    Response Body:
+    {
+        "status": "success",
+        "message": "Buku berhasil dihapus"
+    }
