@@ -3,7 +3,7 @@ const addBookHandler = require('./handler');
 const routes = [
   {
     method: 'POST',
-    path: '/',
+    path: '/books',
     handler: addBookHandler,
   },
 
