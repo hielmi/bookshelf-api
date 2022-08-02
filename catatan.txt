@@ -1,4 +1,4 @@
-3 jam 13 menit
+5 jam 13 menit
 
 
 # Post
@@ -132,6 +132,7 @@ Body Request:
         "status": "success",
         "message": "Buku berhasil diperbarui"
     }
+-------------------------------------------------------------------------
 
 # Delete book
 Method : DELETE
