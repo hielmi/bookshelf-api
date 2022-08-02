@@ -45,6 +45,8 @@ Body :{
    }
    
 #GET all books
+Method : GET
+URL: /books
 ## Success
  const response = h.response({
     status: 'success',
