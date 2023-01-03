@@ -23,7 +23,7 @@ const addBookHandler = (req, h) => {
     const id = nanoid(16);
     const insertedAt = new Date().toISOString();
     const updatedAt = insertedAt;
-    const finished = false;
+    const finished = readPage === pageCount;
     const newBooks = {
       id,
       name,
@@ -47,7 +47,6 @@ const addBookHandler = (req, h) => {
       },
     });
     response.code(201);
-    console.log(Books);
     return response;
   } catch (err) {
     const response = h.response({
@@ -190,7 +189,6 @@ const updateBookByHandler = (req, h) => {
       });
 
       response.code(200);
-      console.log(Books);
       return response;
     }
     const response = h.response({
@@ -222,7 +220,6 @@ const deleteBookByIdHandler = (req, h) => {
     });
 
     response.code(200);
-    console.log(Books);
     return response;
   }
   const response = h.response({
